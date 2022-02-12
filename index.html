@@ -5,11 +5,48 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>COUNTER</title>
-  <script src="jquery-2.2.4.min.js"></script>
+  <script
+			  src="https://code.jquery.com/jquery-2.2.4.min.js"
+			  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+			  crossorigin="anonymous"></script>
   <script src="script.js"></script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>    
-  <div>todo counter...</div>
+  <div id="main">
+    <div id="center-wrap">
+      <div id="center">
+        <div class="digits">--</div>
+        <div class="action">
+          <button data-rate="2">1/2</button>
+          <button data-rate="4">1/4</button>
+          <button data-rate="5">1/5</button>
+          <button data-rate="10">1/10</button>
+          <button data-rate="20">1/20</button>
+          <button data-rate="50">1/50</button>
+          <button data-rate="100">1/100</button>
+        </div>
+      </div>
+    </div>    
+  </div>
 </body>
+<script>
+  $(document).ready(function() {
+    var c = MakeCoutner({
+      container: '#main .digits',
+      maxDigits: 5,
+    })    
+    const actionButtons = $('button[data-rate]');
+    actionButtons.click(function() {
+      if (c.isRun()) {
+        actionButtons.removeClass('active')
+        c.stop()
+      } else {
+        $(this).addClass('active')
+        const r = 1000 / $(this).attr('data-rate');      
+        c.start(r)        
+      }
+    })
+  })  
+</script>
 </html>
