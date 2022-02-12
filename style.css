@@ -36,16 +36,16 @@ button.active {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   font-size: 20vh;
   line-height: 0.5em;
+  color: rgb(99, 99, 99);
 }
 
-[data-color="0"] { color: rgb(220, 220, 220); }
+[data-color="0"] { color: rgb(200, 200, 200); }
 [data-color="1"] { color: rgb(173, 17, 17); }
 [data-color="2"] { color: rgb(218, 198, 20); }
 [data-color="3"] { color: rgb(41, 168, 48); }
 [data-color="4"] { color: rgb(10, 192, 192); }
 [data-color="5"] { color: rgb(34, 54, 233); }
 [data-color="6"] { color: rgb(207, 20, 198); }
-[data-color="7"] { color: rgb(99, 99, 99); }
 
 .action {
   margin: 35px;

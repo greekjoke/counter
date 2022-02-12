@@ -34,7 +34,8 @@ function MakeCoutner(opt) {
       this.stop()
       rate = Math.floor(rate || 500)
       coutner = 0      
-      $('body').addClass('run')      
+      $('body').addClass('run')
+      
       this.render()
       timer = setInterval(function() {        
         coutner++
@@ -55,7 +56,9 @@ function MakeCoutner(opt) {
         const w = s[s.length - i - 1]
         const c = parseInt(w) % maxColors
         const e = digits[maxDigits - i - 1];
-        e.attr('data-color', c)
+        if (i == 0) {
+          e.attr('data-color', c)
+        }
         e.html(w)
       }
     }
