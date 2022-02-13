@@ -36,7 +36,7 @@ button.active {
   /*font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;*/
   /*font-family: 'Lato';  */
   font-family: 'Courier New', monospace;
-  font-size: 20vh;
+  font-size: 20vmin;
   line-height: 0.5em;
   color: rgb(100, 100, 100);
 }
