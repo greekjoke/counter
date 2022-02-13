@@ -16,16 +16,20 @@
   <div id="main">
     <div id="center-wrap">
       <div id="center">
-        <div class="digits">--</div>
-        <div class="action">
-          <button data-rate="2">1/2</button>
-          <button data-rate="4">1/4</button>
-          <button data-rate="5">1/5</button>
-          <button data-rate="10">1/10</button>
-          <button data-rate="20">1/20</button>
-          <button data-rate="50">1/50</button>
-          <button data-rate="100">1/100</button>
-        </div>
+        <div class="digits">--</div>        
+          <div class="action">
+            <button data-rate="2">1/2</button>
+            <button data-rate="4">1/4</button>
+            <button data-rate="5">1/5</button>
+            <button data-rate="10">1/10</button>
+            <button data-rate="20">1/20</button>
+            <button data-rate="50">1/50</button>
+            <button data-rate="100">1/100</button>
+          </div>                    
+          <form class="options" autocomplete="off" action="#" method="get">
+            <label><input type="checkbox" data-opt="rollForm" checked>Форма</label>
+            <label><input type="checkbox" data-opt="rollColor" checked>Цвет</label>
+          </form>        
       </div>
     </div>    
   </div>
@@ -35,6 +39,8 @@
     let c = MakeCoutner({
       container: '#main .digits',
       maxDigits: 5,
+      rollColor: true,
+      rollForm: true,      
     })    
     const actionButtons = $('button[data-rate]')
     actionButtons.click(function() {
@@ -46,6 +52,12 @@
         const r = 1000 / $(this).attr('data-rate')
         c.start(r)        
       }
+    })
+    const ctrlOptions = $('input[data-opt]')
+    ctrlOptions.change(function() {
+      const n = $(this).attr('data-opt')
+      const v = $(this).prop('checked') || false
+      c.option(n, v)
     })
   })  
 </script>

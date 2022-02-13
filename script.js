@@ -10,6 +10,9 @@ function pad(n, width, z) {
 
 function MakeCoutner(opt) {
   opt = opt || {}
+
+  opt.rollColor = undefined === opt.rollColor ? true : opt.rollColor
+  opt.rollForm = undefined === opt.rollForm ? true : opt.rollForm
   
   const maxColors = opt.maxColors || 7
   const maxDigits = opt.maxDigits || 5  
@@ -74,12 +77,21 @@ function MakeCoutner(opt) {
         const e = digits[maxDigits - i - 1]
         if (cache[i] === w) continue
         cache[i] = w
-        if (i == 0) {
+        if (i == 0 && opt.rollColor) {
           e.attr('data-color', c)
         }
-        e.html(w)        
+        if (opt.rollForm) {
+          e.html(w)
+        }
       }
-    }
+    },
+    option: function(name, value) {
+      const old = opt[name]
+      if (undefined !== value) {
+        opt[name] = value
+      }      
+      return old
+    },
   }
 }
 
