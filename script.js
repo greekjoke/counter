@@ -8,7 +8,7 @@ function pad(n, width, z) {
   return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n
 }
 
-function MakeCoutner(opt) {
+function MakeCounter(opt) {
   opt = opt || {}
 
   opt.rollColor = undefined === opt.rollColor ? true : opt.rollColor
@@ -20,7 +20,7 @@ function MakeCoutner(opt) {
   const digits = []
   let cache = {}
   let timer = null
-  let coutner = 0
+  let counter = 0
   const stat = {}
 
   con.html('')
@@ -38,7 +38,7 @@ function MakeCoutner(opt) {
       this.stop()
       
       rate = Math.floor(rate || 500)
-      coutner = 0            
+      counter = 0            
       cache = {}
       stat.periodFrame = 0
       stat.periodStart = new Date()
@@ -47,7 +47,7 @@ function MakeCoutner(opt) {
       
       const that = this
       timer = setInterval(function() {        
-        coutner++     
+        counter++     
         that.render()
         
         // calculate statistics
@@ -69,7 +69,7 @@ function MakeCoutner(opt) {
       }
     },
     render: function() {      
-      const s = pad(coutner, maxDigits)
+      const s = pad(counter, maxDigits)
       const n = Math.min(s.length, maxDigits)
       for(let i=0; i < n; i++) {
         const w = s[s.length - i - 1]
