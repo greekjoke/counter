@@ -13,6 +13,7 @@ function MakeCounter(opt) {
 
   opt.rollColor = undefined === opt.rollColor ? true : opt.rollColor
   opt.rollForm = undefined === opt.rollForm ? true : opt.rollForm
+  opt.digRand = undefined === opt.digRand ? true : opt.digRand
   
   const maxColors = opt.maxColors || 7
   const maxDigits = opt.maxDigits || 5  
@@ -72,9 +73,12 @@ function MakeCounter(opt) {
       const s = pad(counter, maxDigits)
       const n = Math.min(s.length, maxDigits)
       for(let i=0; i < n; i++) {
-        const w = s[s.length - i - 1]
+        let w = s[s.length - i - 1]
         const c = parseInt(w) % maxColors
         const e = digits[maxDigits - i - 1]
+        if (opt.digRand && i === 0) {
+          w = this.randDig(cache[i])
+        }
         if (cache[i] === w) continue
         cache[i] = w
         if (i == 0 && opt.rollColor) {
@@ -84,7 +88,7 @@ function MakeCounter(opt) {
           e.html(w)
         }
       }
-    },
+    },    
     option: function(name, value) {
       const old = opt[name]
       if (undefined !== value) {
@@ -92,6 +96,18 @@ function MakeCounter(opt) {
       }      
       return old
     },
+    rand: function(min=0, max=1) {
+      const r = Math.random()
+      return (max - min) * r + min
+    },
+    randDig: function(cur) {
+      cur = parseInt(cur || 0)
+      let r = cur
+      while (r === cur) {      
+         r = Math.round(this.rand(0, 9))
+      }
+      return r
+    }
   }
 }
 

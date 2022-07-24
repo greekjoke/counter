@@ -30,6 +30,7 @@
           <form class="options" autocomplete="off" action="#" method="get">
             <label><input type="checkbox" data-opt="rollForm" checked>Форма</label>
             <label><input type="checkbox" data-opt="rollColor" checked>Цвет</label>
+            <label><input type="checkbox" data-opt="digRand" >Случ</label>
           </form>        
       </div>
     </div>    
@@ -42,6 +43,7 @@
       maxDigits: 5,
       rollColor: true,
       rollForm: true,      
+      digRand: false,
     })    
     const actionButtons = $('button[data-rate]')
     actionButtons.click(function() {
